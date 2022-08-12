@@ -37,13 +37,13 @@ include_directories(${INCLUDE_DIR}
                     ${INCLUDE_DIR}/msgpack
 	            ${INCLUDE_DIR}/curl
                     ${INCLUDE_DIR}/trower-base64
-                    ${INCLUDE_DIR}/wrp-c                   
+                    ${INCLUDE_DIR}/wrp-c
                     ${INCLUDE_DIR}/libparodus
                     ${INCLUDE_DIR}/cimplog
                     ${INCLUDE_DIR}/cjwt
-					)	
+					)
 
-# Get git commit hash 
+# Get git commit hash
 #-------------------------------------------------------------------------------
 execute_process(
   COMMAND git describe --tags --always
@@ -52,7 +52,7 @@ execute_process(
   OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-add_definitions("-DGIT_COMMIT_TAG=\"${GIT_COMMIT_TAG}\"")	
+add_definitions("-DGIT_COMMIT_TAG=\"${GIT_COMMIT_TAG}\"")
 
 # Compile options/flags
 #-------------------------------------------------------------------------------
@@ -86,7 +86,7 @@ add_dependencies(libtrower-base64 trower-base64)
 ExternalProject_Add(nopoll
     PREFIX ${PREFIX_DIR}/nopoll
     GIT_REPOSITORY https://github.com/Comcast/nopoll.git
-    GIT_TAG "1.0.2"
+    GIT_TAG "1.0.3"
     CONFIGURE_COMMAND COMMAND <SOURCE_DIR>/autogen.sh --prefix=${PREFIX}
                                                      --includedir=${INCLUDE_DIR}
                                                      --libdir=${LIBRARY_DIR}
@@ -225,7 +225,7 @@ add_library(libucresolv STATIC SHARED IMPORTED)
 add_dependencies(libucresolv ucresolv)
 include_directories(${INCLUDE_DIR}
                     ${INCLUDE_DIR}/ucresolv
-					)		
+					)
 
 endif (FEATURE_DNS_QUERY)
 
